@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+body{
+  background: white;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 20px;
+  margin-top: -100px;
+  /* background-image: url('comic.png'); */
+  background: url(comic.png) no-repeat center center fixed; 
+}
+
+#chart {
+    height: 440px;
+    width: 226px;
+  }
+
+  #characterImage {
+      width: 100%;
+  }
+
+  h2 {
+      text-align: center;
+  }
+
+  #container {
+      display: flex;
+      
+  }
+
+  #photobox {
+    border: 8px solid black;
+  }
+
+  table th {
+    height: 80px;
+    width: 1150px;
+    border: 5px solid black;
+  }
+
+  table tr{
+    width: 230px;
+  }
+
+  td {
+    /* text-align: center; */
+    vertical-align:top;
+    border: 5px solid black;
+  }
+
+  table {
+    border-spacing: 1em .5em;
+    padding: 0 2em 1em 0;
+    top: 2%;
+  }
+
+  .center {
+    margin-left: 1.5%; 
+    margin-right: 1.5%;
+  }
+
+  .myProgress {
+    width: 100%;
+    background-color: #ddd;
+    margin: 25px 0px;
+  }
+  
+  #myBar, #intelligence, #strength, #speed, #durability, #power, #combat {
+    width: 1%;
+    height: 30px;
+    background-color: #04AA6D;
+    margin: -15px 0px;
+  }
+
+  #characterGif {
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper{
+  max-width: 300px;
+  margin-left: 20px;
+}
+.wrapper .search-input{
+  background: #fff;
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
+}
+.search-input input{
+  height: 55px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  /* padding: 0 60px 0 20px; */
+  font-size: 18px;
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+/* .search-input.active input{
+  border-radius: 5px 5px 0 0;
+} */
+.search-input .autocom-box{
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  max-height: 280px;
+  overflow-y: auto;
+}
+.search-input.active .autocom-box{
+  padding: 10px 8px;
+  opacity: 1;
+  pointer-events: auto;
+}
+/* .autocom-box li{
+  list-style: none;
+  padding: 8px 12px;
+  display: none;
+  width: 100%;
+  cursor: default;
+  border-radius: 3px;
+  z-index: 3;
+} */
+.search-input.active .autocom-box li{
+  display: block;
+}
+.autocom-box li:hover{
+  background: #efefef;
+}
+.search-input .icon{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 55px;
+  width: 55px;
+  /* text-align: center; */
+  line-height: 55px;
+  font-size: 20px;
+  color: #644bff;
+  cursor: pointer;
+}
+
+
+.heart {
+  width: 100px;
+  height: 100px;
+  position: sticky;
+  left: 100%;
+  top: 85%;
+  transform: translate(-50%, -50%);
+  background: url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+  background-color: pink;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+#mainHead {
+  display: flex;
+  justify-content: space-between;
+}
+
+#button {
+  margin-right: 20px;
+}
+
+#button button {
+
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+  
+
+  margin: 0px;
+  width:  120px;
+  height: 50px;
+  border: 1.5px solid black;
+}
+
+button:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+button:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+button:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+#git {
+  height: 42px;
+  width: 42px;
+  margin-top: 26px;
+}

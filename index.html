@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>SuperHero Hunter</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+</head>
+
+<body>
+    <div class="heart"></div>
+        <table class="center">
+            <thead>
+                <tr>
+                    <th colspan="3" style="background-color: #644bff;">
+                        <div id="mainHead">
+                        <div class="wrapper">
+                            <div class="search-input" style="margin-top: 20px;">
+                              <input id="automplete-3" onkeypress="suggestion()">
+                              <div class="icon" onclick="search()"><i class="fas fa-search"></i></div>
+                            </div>
+                          </div>
+                          <div><h1>Search for your favorite super hero!</h1></div>
+                          <div id="button">
+                          <button style="margin-top: 22px;" type="button" id="favourites">Favourites</button>
+                          </div>
+                        </div>
+                    </th>
+                </tr>
+                    <tr>
+                        <td style ="width: 250px; height: 320px; background-color: #F7F700;">
+                            <h2 style="margin-top: 15px;" id="characterName">Name</h2>
+                            <img id="characterImage" src="">
+                        </td>
+                        <td rowspan="2" style ="width: 630px; margin-bottom: 0%; background-color:aqua; padding: 0px 30px;">
+                            <h2 style="margin-top: 0px;">Bio</h2>
+                            <p id="fullName"></p>
+                            <p id="aliases"></p>
+                            <p id="place-of-birth"></p>
+                            <p id="race"></p>
+                            <p id="height"></p>
+                            <p id="weight"></p>
+                            <p id="eyeColor"></p>
+                            <p id="hairColor"></p>
+                            <p id="alter-egos"></p>
+                            <p id="relatives"></p>
+                        </td>
+                        <td style ="width: 450px; background-color: #FF2E2F;">
+                            <h2><b>Power Stats</b></h2>
+                            <div class="myProgress">
+                                <p><b>Intelligence</b></p>
+                                <div id="intelligence"></div>
+                            </div>
+                            <div class="myProgress">
+                                <p><b>Strength</b></p>
+                                <div id="strength"></div>
+                            </div>
+                            <div class="myProgress">
+                                <p><b>Speed</b></p>
+                                <div id="speed"></div>
+                            </div>
+                            <div class="myProgress">
+                                <p><b>Durablity</b></p>
+                                <div id="durability"></div>
+                            </div>
+                            <div class="myProgress">
+                                <p><b>Power</b></p>
+                                <div id="power"></div>
+                            </div>
+                            <div class="myProgress">
+                                <p><b>Combat</b></p>
+                                <div id="combat"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style ="background-color: #00FF00">
+                            <p id="public"></p>
+                            <p id="firstApp"></p>
+                            <p id="notAff"></p>
+                        </td>
+                        <td style="vertical-align: middle; background-color: black;"><img id="characterGif" src=""></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style ="background-color: #B2ACAB;">
+                            <div style="display: flex; justify-content: center;">
+                                <div>
+                            <img id="git" src="git.png">
+                                </div>
+                                <a href="https://github.com/pratz-singh">
+                                <div>
+                            <h2>Pratyush</h2>
+                                </div>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+            </thead>
+        </table>
+    <script src="profile.js">
+    </script>
+</body>
+
+</html>
+
+<!-- 
+<div class="demo-container">
+    <div id="chart"></div>
+</div> -->

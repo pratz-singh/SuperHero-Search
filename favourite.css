@@ -1,0 +1,71 @@
+body{
+    background: white;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    /* background-image: url('comic.png'); */
+    background: url(comic.png) no-repeat center center fixed; 
+  }
+
+.characterImage {
+    height: 200px;
+    width: 140px;
+    padding: 15px;
+}
+
+.charDiv {
+    border: 5px solid black;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: initial;
+    max-width: 40%;
+    margin-left: 30%;
+    background-color: white;
+}
+
+.close {
+    max-width: 50px;
+    position: relative;
+    margin-left: 1%;
+}
+
+.detail {
+    width: 380px;
+}
+
+#mainHead {
+    display: flex;
+    justify-content: center;
+    margin-left: 20%;
+    width: 60%;
+    text-align: center;
+    background-color: violet;
+    border: 3px solid black;
+    border-radius:15px;
+}
+
+#mainHead h1 {
+    font-size: 50px;
+    height: 70px;
+}
+
+#back {
+    height: 100px;
+    width: 100px;
+  position: absolute;
+  left: 5%;
+  top: 4%;
+  background-color: white;
+  border-radius: 50%;
+}
+
+#back img {
+    height: 100px;
+    width: 100px;
+}
+
+.animatedGif {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    margin-top: 7px;
+    border: 4px solid red;
+}
