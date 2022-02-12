@@ -8,8 +8,26 @@ let favourite = [];
 favourite = JSON.parse(localStorage.getItem("favlast"));
 
 if (charId != 0) {
-  console.log(charId);
-  display();
+  fetch('https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/'+token+'/' + charId)
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data.name);
+    let charName = data.name;
+    fetch('https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/'+token+'/search/' + charName)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      let id = data.results[0].id;
+      charId = parseInt(id);
+      if (charId !== 0) {
+        console.log(data);
+        display(data);
+      }
+    })
+  })
 }
 
 function suggestion() {
@@ -46,49 +64,37 @@ function search() {
       let id = data.results[0].id;
       charId = parseInt(id);
       if (charId !== 0) {
-        display();
+        console.log(data);
+        display(data);
       }
     })
 }
 
-function display() {
-  $.getJSON('https://superheroapi.com/api/338148107599656/' + charId + '/biography', function (data) {
+function display(data) {
     let info = data;
-    console.log(info);
-    $("#characterName").text(info.name);
-    $("#public").html('<b>PUBLISHER:</b>' + info.publisher);
-    $('#firstApp').html('<b>First Appearance:</b>' + info["first-appearance"]);
-    $('#fullName').html('<b>Full Name: </b>' + info["full-name"]);
-    $('#aliases').html('<b>Aliases: </b>' + info["aliases"]);
-    $('#place-of-birth').html('<b>Birth Place: </b>' + info["place-of-birth"]);
-    $('#alter-egos').html('<b>Alter-egos: </b>' + info["alter-egos"]);
-    $.getJSON('https://api.giphy.com/v1/gifs/search?api_key=' + gifAPI + '&limit=1&q=' + info.name, function (data) {
+    console.log(info.name);
+    $("#characterName").text(info.results[0].name);
+    $("#public").html('<b>PUBLISHER:</b>' + info.results[0].biography.publisher);
+    $('#firstApp').html('<b>First Appearance:</b>' + info.results[0].biography["first-appearance"]);
+    $('#fullName').html('<b>Full Name: </b>' + info.results[0].biography["full-name"]);
+    $('#aliases').html('<b>Aliases: </b>' + info.results[0].biography["aliases"]);
+    $('#place-of-birth').html('<b>Birth Place: </b>' + info.results[0].biography["place-of-birth"]);
+    $('#alter-egos').html('<b>Alter-egos: </b>' + info.results[0].biography["alter-egos"]);
+    $("#characterImage").attr("src", info.results[0].image.url);
+    $('#notAff').html('<b>Notable Affialation: </b>' + info.results[0].connections["group-affiliation"]);
+    $('#relatives').html('<b>Relatives: </b>' + info.results[0].connections["relatives"]);
+    $('#race').html('<b>Race: </b>' + info.results[0].appearance["race"]);
+    $('#height').html('<b>Height: </b>' + info.results[0].appearance["height"]);
+    $('#weight').html('<b>Weight: </b>' + info.results[0].appearance["weight"]);
+    $('#eyeColor').html('<b>Eye Color: </b>' + info.results[0].appearance["eye-color"]);
+    $('#hairColor').html('<b>Hair Color: </b>' + info.results[0].appearance["hair-color"]);
+    
+    $.getJSON('https://api.giphy.com/v1/gifs/search?api_key=' + gifAPI + '&limit=1&q=' + info.results[0].name, function (data) {
       let gifInfo = data;
       console.log(gifInfo);
       $("#characterGif").attr("src", gifInfo.data[0].images.downsized.url);
     })
-  })
-  $.getJSON('https://superheroapi.com/api/338148107599656/' + charId + '/image', function (data) {
-    let info = data;
-    $("#characterImage").attr("src", info.url);
-  })
-  $.getJSON('https://superheroapi.com/api/338148107599656/' + charId + '/connections', function (data) {
-    let info = data;
-    $('#notAff').html('<b>Notable Affialation: </b>' + info["group-affiliation"]);
-    $('#relatives').html('<b>Relatives: </b>' + info["relatives"]);
-  })
-  $.getJSON('https://superheroapi.com/api/338148107599656/' + charId + '/appearance', function (data) {
-    let info = data;
-    $('#race').html('<b>Race: </b>' + info["race"]);
-    $('#height').html('<b>Height: </b>' + info["height"]);
-    $('#weight').html('<b>Weight: </b>' + info["weight"]);
-    $('#eyeColor').html('<b>Eye Color: </b>' + info["eye-color"]);
-    $('#hairColor').html('<b>Hair Color: </b>' + info["hair-color"]);
-  })
 
-
-  $.getJSON('https://superheroapi.com/api/338148107599656/' + charId + '/powerstats', function (data) {
-    let info = data;
     var i = 0;
     function move1() {
       if (i == 0) {
@@ -97,10 +103,10 @@ function display() {
         var width = 0;
         var id = setInterval(frame, 10);
         function frame() {
-          if (info.intelligence === "null") {
+          if (info.results[0].powerstats["intelligence"] === "null") {
             return;
           }
-          if (width >= parseInt(info.intelligence)) {
+          if (width >= parseInt(info.results[0].powerstats["intelligence"])) {
             clearInterval(id);
             i = 0;
           } else {
@@ -119,10 +125,10 @@ function display() {
         var width = 0;
         var id = setInterval(frame, 10);
         function frame() {
-          if (info.strength === "null") {
+          if (info.results[0].powerstats["strength"] === "null") {
             return;
           }
-          if (width >= parseInt(info.strength)) {
+          if (width >= parseInt(info.results[0].powerstats["strength"])) {
             clearInterval(id);
             i = 0;
           } else {
@@ -141,10 +147,10 @@ function display() {
         var width = 0;
         var id = setInterval(frame, 10);
         function frame() {
-          if (info.speed === "null") {
+          if (info.results[0].powerstats["speed"] === "null") {
             return;
           }
-          if (width >= parseInt(info.speed)) {
+          if (width >= parseInt(info.results[0].powerstats["speed"])) {
             clearInterval(id);
             i = 0;
           } else {
@@ -163,10 +169,10 @@ function display() {
         var width = 0;
         var id = setInterval(frame, 10);
         function frame() {
-          if (info.durability === "null") {
+          if (info.results[0].powerstats["durability"] === "null") {
             return;
           }
-          if (width >= parseInt(info.durability)) {
+          if (width >= parseInt(info.results[0].powerstats["durability"])) {
             clearInterval(id);
             i = 0;
           } else {
@@ -185,10 +191,10 @@ function display() {
         var width = 0;
         var id = setInterval(frame, 10);
         function frame() {
-          if (info.power === "null") {
+          if (info.results[0].powerstats["power"] === "null") {
             return;
           }
-          if (width >= parseInt(info.power)) {
+          if (width >= parseInt(info.results[0].powerstats["power"])) {
             clearInterval(id);
             i = 0;
           } else {
@@ -207,10 +213,10 @@ function display() {
         var width = 0;
         var id = setInterval(frame, 10);
         function frame() {
-          if (info.combat === "null") {
+          if (info.results[0].powerstats["combat"] === "null") {
             return;
           }
-          if (width >= parseInt(info.combat)) {
+          if (width >= parseInt(info.results[0].powerstats["combat"])) {
             clearInterval(id);
             i = 0;
           } else {
@@ -234,8 +240,7 @@ function display() {
       var i = 0;
       move6();
     }
-  });
-}
+  }
 
 $('.heart').click(function () {
   //favourite.push(charId);
