@@ -8,14 +8,14 @@ let favourite = [];
 favourite = JSON.parse(localStorage.getItem("favlast"));
 
 if (charId != 0) {
-  fetch('https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/'+token+'/' + charId)
+  fetch('https://www.superheroapi.com/api.php/891370368026086/' + charId)
   .then((response) => {
     return response.json();
   })
   .then((data) => {
     console.log(data.name);
     let charName = data.name;
-    fetch('https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/'+token+'/search/' + charName)
+    fetch('https://www.superheroapi.com/api.php/891370368026086/search/' + charName)
     .then((response) => {
       return response.json();
     })
@@ -56,7 +56,7 @@ function search() {
   })
   var str = $("#automplete-3").val();
 
-  fetch('https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/338148107599656/search/' + str)
+  fetch('https://www.superheroapi.com/api.php/891370368026086/search/' + str)
     .then((response) => {
       return response.json();
     })
@@ -91,7 +91,6 @@ function display(data) {
     
     $.getJSON('https://api.giphy.com/v1/gifs/search?api_key=' + gifAPI + '&limit=1&q=' + info.results[0].name, function (data) {
       let gifInfo = data;
-      console.log(gifInfo);
       $("#characterGif").attr("src", gifInfo.data[0].images.downsized.url);
     })
 

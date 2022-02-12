@@ -3,8 +3,8 @@ let charId = [];
 var numeric = null;
 charId = JSON.parse(localStorage.getItem("fav"));
 charId.forEach(element => {
-    $.getJSON('https://superheroapi.com/api/' + token + '/' + element, function (data) {
-        if (element != null) {
+    $.getJSON('https://www.superheroapi.com/api.php/891370368026086/' + element, function (data) {
+        if (element != null && data.image) {
             $('body').append('<div class="charDiv" onClick="charInfo(this.id)" id="char' + element + '" />');
             $('#char' + element).append('<div><img class="characterImage" src=' + data.image["url"] + '></div><div class="detail"><h2 id="characterName">Name: ' + data.name + '</h2><h2 id=""public>Character ID: ' + data.id + '</h2><h2>Publisher: ' + data.biography["publisher"] + '</h2><h2>Gender: ' + data.appearance["gender"] + '</h2></div><div class="close"><img src="close.png" width="50" height="50" id="' + element + '" onClick="reply_click(this.id)"></div>');
         }
